@@ -19,7 +19,7 @@ export default function TaskSummary({ tasks }: Props) {
       <div className='font-bold'>
         <span className='text-purple'>Completed</span>{" "}
         <span className='rounded-full px-2 py-1 bg-muted text-xs'>
-          {completedTasks} de {totalTasks}
+          {completedTasks} of {totalTasks}
         </span>
       </div>
     </div>

@@ -15,19 +15,21 @@ export default function TaskListItem({ task }: Props) {
   const { mutate: deleteTask, isPending } = useDeleteTask(task.id);
 
   return (
-    <Link
-      href={ROUTES.detailTask.replace(":id", task.id)}
-      className='border rounded-lg bg-card text-card-foreground p-4 w-full flex justify-between hover:brightness-105 transition-all'
-    >
-      <div className='flex gap-4'>
+    <div className='border rounded-lg bg-card text-card-foreground p-4 w-full flex justify-between hover:brightness-105 transition-all'>
+      <div className='flex gap-4 items-start flex-1'>
         <TaskItemToggle task={task} />
-        <p className='text-sm flex-1 leading-[1.4'>{task.title}</p>
+        <Link
+          href={ROUTES.detailTask.replace(":id", task.id)}
+          className='text-sm flex-1 leading-[1.4] hover:underline'
+        >
+          {task.title}
+        </Link>
       </div>
       <TaskItemDelete
         onConfirm={deleteTask}
         onOpenChange={setOpen}
         isLoading={isPending}
       />
-    </Link>
+    </div>
   );
 }
