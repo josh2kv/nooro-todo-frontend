@@ -31,7 +31,7 @@ export function TaskItemDelete({
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger className='cursor-pointer'>
+      <AlertDialogTrigger className='cursor-pointer h-fit mt-0.5'>
         <Trash2 className='size-4 text-disabled hover:text-destructive' />
       </AlertDialogTrigger>
       <AlertDialogContent>

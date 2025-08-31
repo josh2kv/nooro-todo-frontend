@@ -7,6 +7,11 @@ async function getTasks(): Promise<ResSuccess<Task[]>> {
   return res.data;
 }
 
+async function getTaskById(id: string): Promise<ResSuccess<Task>> {
+  const res = await api.get<ResSuccess<Task>>(`/tasks/${id}`);
+  return res.data;
+}
+
 async function createTask(input: CreateTaskInput): Promise<ResSuccess<Task>> {
   const res = await api.post<ResSuccess<Task>>("/tasks", input);
   return res.data;
@@ -16,7 +21,8 @@ async function updateTask(
   id: string,
   input: UpdateTaskInput
 ): Promise<ResSuccess<Task>> {
-  const res = await api.put<ResSuccess<Task>>(`/tasks/${id}`, input);
+  console.log("updateTask", id, input);
+  const res = await api.patch<ResSuccess<Task>>(`/tasks/${id}`, input);
   return res.data;
 }
 
@@ -37,6 +43,7 @@ async function toggleTask(
 
 export const taskApi = {
   getTasks,
+  getTaskById,
   createTask,
   updateTask,
   deleteTask,
