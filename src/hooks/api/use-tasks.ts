@@ -37,11 +37,11 @@ export const useUpdateTask = () => {
   });
 };
 
-export const useDeleteTask = () => {
+export const useDeleteTask = (taskId: string) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: taskApi.deleteTask,
+    mutationFn: () => taskApi.deleteTask(taskId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: TASKS_QUERY_KEY });
       toast.success("Task deleted successfully!");
@@ -49,12 +49,11 @@ export const useDeleteTask = () => {
   });
 };
 
-export const useToggleTask = () => {
+export const useToggleTask = (taskId: string) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ id, completed }: { id: string; completed: boolean }) =>
-      taskApi.toggleTask(id, completed),
+    mutationFn: (completed: boolean) => taskApi.toggleTask(taskId, completed),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: TASKS_QUERY_KEY });
     },

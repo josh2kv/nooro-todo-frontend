@@ -29,7 +29,7 @@ async function toggleTask(
   id: string,
   completed: boolean
 ): Promise<ResSuccess<Task>> {
-  const res = await api.put<ResSuccess<Task>>(`/tasks/${id}`, {
+  const res = await api.patch<ResSuccess<Task>>(`/tasks/${id}`, {
     completed,
   });
   return res.data;
