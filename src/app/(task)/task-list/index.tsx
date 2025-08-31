@@ -13,7 +13,7 @@ export default function TaskListPage() {
   const { data: tasks, isLoading, error } = useTasks();
 
   return (
-    <div className='max-w-[760px] w-full mx-auto px-3'>
+    <div className='max-w-[760px] w-full mx-auto px-3 pb-8'>
       <Link
         href={ROUTES.createTask}
         className={cn(

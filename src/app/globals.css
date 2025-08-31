@@ -42,6 +42,7 @@
   --radius-xl: calc(var(--radius) + 4px);
   --color-blue: hsla(202, 69%, 59%, 1);
   --color-purple: hsla(239, 92%, 75%, 1);
+  --color-dark-purple: hsla(239, 53%, 59%, 1);
   --color-disabled: hsla(0, 0%, 50%, 1);
  }
 

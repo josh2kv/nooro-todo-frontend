@@ -15,8 +15,8 @@ export default function TaskListItem({ task }: Props) {
   const { mutate: deleteTask, isPending } = useDeleteTask(task.id);
 
   return (
-    <div className='border rounded-lg bg-card text-card-foreground p-4 w-full flex items-center justify-between'>
-      <div className='flex items-center gap-4'>
+    <div className='border rounded-lg bg-card text-card-foreground p-4 w-full flex justify-between'>
+      <div className='flex gap-4'>
         <TaskItemToggle task={task} />
         <p className='text-sm flex-1 leading-[1.4'>{task.title}</p>
       </div>
