@@ -1,33 +1,33 @@
-import { z } from "zod"
+import { z } from "zod";
 
-export const TaskColor = z.enum(["red", "blue", "green"])
-export type TaskColor = z.infer<typeof TaskColor>
+export const taskColorSchema = z.enum(["red", "blue", "green"]);
+export type TaskColor = z.infer<typeof taskColorSchema>;
 
-export const Task = z.object({
+export const taskSchema = z.object({
   id: z.string(),
   title: z.string(),
-  color: TaskColor,
+  color: taskColorSchema,
   completed: z.boolean(),
   createdAt: z.string(),
   updatedAt: z.string(),
-})
+});
 
-export type Task = z.infer<typeof Task>
+export type Task = z.infer<typeof taskSchema>;
 
-export const CreateTaskInput = z.object({
+export const tasksSchema = z.array(taskSchema);
+export type Tasks = z.infer<typeof tasksSchema>;
+
+export const createTaskInputSchema = z.object({
   title: z.string().min(1, "Title is required"),
-  color: TaskColor,
-})
+  color: taskColorSchema,
+});
 
-export type CreateTaskInput = z.infer<typeof CreateTaskInput>
+export type CreateTaskInput = z.infer<typeof createTaskInputSchema>;
 
-export const UpdateTaskInput = z.object({
+export const updateTaskInputSchema = z.object({
   title: z.string().min(1, "Title is required").optional(),
-  color: TaskColor.optional(),
+  color: taskColorSchema.optional(),
   completed: z.boolean().optional(),
-})
+});
 
-export type UpdateTaskInput = z.infer<typeof UpdateTaskInput>
-
-export const TasksResponse = z.array(Task)
-export type TasksResponse = z.infer<typeof TasksResponse>
+export type UpdateTaskInput = z.infer<typeof updateTaskInputSchema>;
